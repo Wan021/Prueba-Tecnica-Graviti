@@ -1,0 +1,78 @@
+{% extends "./Plantilla.html" %}
+
+{% block title %} Listado de Nacionalidades {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <h2>Ingresar nuevo</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/registrarPersona/" method="post">{% csrf_token %}
+                        <div class="from-group">
+                            <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre(s)" maxlength="50" required>
+                        </div>
+                        <div class="from-group">
+                            <input type="text" id="txtApellidoPaterno" name="txtApellidoPaterno" class="form-control" placeholder="ApellidoPaterno" maxlength="50" required>
+                        </div>
+                        <div class="from-group">
+                            <input type="text" id="txtApellidoMaterno" name="txtApellidoMaterno" class="form-control" placeholder="ApellidoMaterno" maxlength="50" required>
+                        </div>
+                        <div class="from-group">
+                            <input type="text" id="txtNacionalidad" name="txtNacionalidad" class="form-control" placeholder="Nacionalidad" maxlength="30" required>
+                        </div>
+                        <div class="from-group">
+                            <input type="text" id="txtEdad" name="txtEdad" class="form-control" min="0" max="100" value="18" required>
+                        </div>
+                        <div class="from-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+            <h1>Listado de Nacionalidades</h1>
+            <div class="table-responsive py-2">
+                <table class="table table-dark table-striped border-primary text-light">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><a href="/OrderNombre/ ">Nombre(s)</a></th>
+                            <th><a href="/OrderAPaterno/ ">Apellido Paterno</a></th>
+                            <th><a href="/OrderAMaterno/ ">Apellido Materno</a></th>
+                            <th><a href="/OrderNacionalidad/ ">Nacionalidad</a></th>
+                            <th><a href="/OrderEdad/ ">Edad</a></th>
+                            <th colspan="2">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in personas %}
+                        <tr>
+                            <th>{{forloop.counter}}</th>
+                            <th>{{c.nombre}}</th>
+                            <th>{{c.apellido_paterno}}</th>
+                            <th>{{c.apellido_materno}}</th>
+                            <th>{{c.nacionalidad}}</th>
+                            <th>{{c.edad}}</th>
+                            <th><a href="edicionPersona/{{c.codigo}}" class="btn btn-info">Editar</a></th>
+                            <th><a href="eliminacionPersona/{{c.codigo}}" class="btn btn-danger btnEliminacion">Eliminar</a></th>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong class="text-dark">{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+               
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "./Plantilla.html" %}
+
+{% block title %} Edición de Nacionalidades {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 offset-md-12">
+            <h2>Edición</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/editarPersona/" method="post">{% csrf_token %}
+                        <div class="from-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Codigo:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="txtCodigo" name="txtCodigo" value="{{persona.codigo}}" class="form-control" placeholder="Codigo" minlength="6" maxlength="6" readonly required>
+                            </div>                            
+                        </div>
+                        <div class="from-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Nombre(s):</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="txtNombre" name="txtNombre" value="{{persona.nombre}}" class="form-control" placeholder="Nombre(s)" maxlength="50" required>
+                            </div>                             
+                        </div>
+                        <div class="from-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Apellido Paterno:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="txtApellidoPaterno" name="txtApellidoPaterno" value="{{persona.apellido_paterno}}" class="form-control" placeholder="ApellidoPaterno" maxlength="50" required>
+                            </div>                              
+                        </div>
+                        <div class="from-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Apellido Materno:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="txtApellidoMaterno" name="txtApellidoMaterno" value="{{persona.apellido_materno}}" class="form-control" placeholder="ApellidoMaterno" maxlength="50" required>
+                            </div>
+                        </div>
+                        <div class="from-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Nacionalidad:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="txtNacionalidad" name="txtNacionalidad" value="{{persona.nacionalidad}}" class="form-control" placeholder="Nacionalidad" maxlength="30" required>
+                            </div>
+                        </div>
+                        <div class="from-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Edad:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="txtEdad" name="txtEdad" value="{{persona.edad}}" class="form-control" min="0" max="100" value="18" required>
+                            </div>
+                        </div>
+                        <div class="from-group row justify-content-center">
+                            <div class="col-6">
+                                <a href="/cancel" class="btn btn-danger btn-block text-white btnCancel">Volver</a>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
