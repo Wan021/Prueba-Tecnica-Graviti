@@ -12,7 +12,7 @@
                         <div class="from-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Codigo:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="txtCodigo" name="txtCodigo" value="{{persona.codigo}}" class="form-control" placeholder="Codigo" minlength="6" maxlength="6" readonly required>
+                                <input type="text" id="txtCodigo" name="txtCodigo" value="{{persona.codigo}}" class="form-control" placeholder="Codigo" minlength="6" maxlength="6" readonly disab>
                             </div>                            
                         </div>
                         <div class="from-group row">
@@ -36,13 +36,28 @@
                         <div class="from-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Nacionalidad:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="txtNacionalidad" name="txtNacionalidad" value="{{persona.nacionalidad}}" class="form-control" placeholder="Nacionalidad" maxlength="30" required>
+                                <select type="text" id="txtNacionalidad" name="txtNacionalidad" class="form-select" required>
+                                    <option value="{{na.codigo}}">{{na.pais}}</option>
+                                    {% for n in nacionalidades %}
+                                    <option value="{{n.codigo}}">{{n.pais}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </div>
                         <div class="from-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Edad:</label>
                             <div class="col-sm-10">
                                 <input type="text" id="txtEdad" name="txtEdad" value="{{persona.edad}}" class="form-control" min="0" max="100" value="18" required>
+                            </div>
+                        </div>
+                        <div class="from-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Sexo:</label>
+                            <div class="col-sm-10">
+                                <select type="text" id="txtSexo" name="txtSexo" class="form-select" required>
+                                    <option value="{{na.letra}}">{{na.sexo}}</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                </select>
                             </div>
                         </div>
                         <div class="from-group row justify-content-center">

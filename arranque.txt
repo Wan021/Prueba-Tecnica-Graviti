@@ -1,3 +1,9 @@
-CRUD-env\Scripts\activate
+Procedimiento para iniciar:
+    1.-Clonar repositorio via github
+    2.-Activar entorno virtual desde la terminal con el siguiente comando (en windows):
+        CRUD-env\Scripts\activate
+    4.-Moverse a la carpeta CRUD desde el terminal
+    5.-Utilizar el comando para iniciar:
+        python manage.py runserver
 
 Muchas gracias por checarlo y espero que cumpla con las espectativas, cualquier cosa estoy abierto a criticas. :)
