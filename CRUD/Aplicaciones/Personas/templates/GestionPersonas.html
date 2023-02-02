@@ -10,18 +10,34 @@
                 <div class="card-body">
                     <form action="/registrarPersona/" method="post">{% csrf_token %}
                         <div class="from-group">
+                            Nombre(s):
                             <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre(s)" maxlength="50" required>
                         </div>
                         <div class="from-group">
+                            Apellido Paterno:
                             <input type="text" id="txtApellidoPaterno" name="txtApellidoPaterno" class="form-control" placeholder="ApellidoPaterno" maxlength="50" required>
                         </div>
                         <div class="from-group">
+                            Apellido Materno:
                             <input type="text" id="txtApellidoMaterno" name="txtApellidoMaterno" class="form-control" placeholder="ApellidoMaterno" maxlength="50" required>
                         </div>
                         <div class="from-group">
-                            <input type="text" id="txtNacionalidad" name="txtNacionalidad" class="form-control" placeholder="Nacionalidad" maxlength="30" required>
+                            País de origen:
+                            <select type="text" id="txtNacionalidad" name="txtNacionalidad" class="form-select" required>
+                                {% for n in nacionalidades %}
+                                <option value="{{n.codigo}}">{{n.pais}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="from-group">
+                            Genero:
+                            <select type="text" id="txtSexo" name="txtSexo" class="form-select" required>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+                        </div>
+                        <div class="from-group">
+                            Edad:
                             <input type="text" id="txtEdad" name="txtEdad" class="form-control" min="0" max="100" value="18" required>
                         </div>
                         <div class="from-group">
@@ -43,6 +59,7 @@
                             <th><a href="/OrderAMaterno/ ">Apellido Materno</a></th>
                             <th><a href="/OrderNacionalidad/ ">Nacionalidad</a></th>
                             <th><a href="/OrderEdad/ ">Edad</a></th>
+                            <th>Sexo</th>
                             <th colspan="2">Opciones</th>
                         </tr>
                     </thead>
@@ -55,8 +72,9 @@
                             <th>{{c.apellido_materno}}</th>
                             <th>{{c.nacionalidad}}</th>
                             <th>{{c.edad}}</th>
-                            <th><a href="edicionPersona/{{c.codigo}}" class="btn btn-info">Editar</a></th>
-                            <th><a href="eliminacionPersona/{{c.codigo}}" class="btn btn-danger btnEliminacion">Eliminar</a></th>
+                            <th>{{c.sexo}}</th>
+                            <th><a href="/edicionPersona/{{c.codigo}}" class="btn btn-info">Editar</a></th>
+                            <th><a href="/eliminacionPersona/{{c.codigo}}" class="btn btn-danger btnEliminacion">Eliminar</a></th>
                         </tr>
                         {% endfor %}
                     </tbody>
