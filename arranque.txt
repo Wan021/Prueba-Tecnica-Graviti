@@ -1,1 +1,3 @@
 CRUD-env\Scripts\activate
+
+Muchas gracias por checarlo y espero que cumpla con las espectativas, cualquier cosa estoy abierto a criticas. :)
